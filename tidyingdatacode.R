@@ -23,3 +23,7 @@ x
 #magrittr - use of pipe
 x %>% head(
   select(room_nights, review_score),2)
+
+#concatenated
+x %>% head(filter(bookings, price_per_night < 80),
+           select(room_nights, review_score),2)
