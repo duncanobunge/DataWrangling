@@ -62,4 +62,33 @@ library(ggplot2)
            n = n(),
            n_miss = sum(is.na(review_score)),
            review_score = mean(review_score,na.rm = TRUE))
-              
+
+ bookings %>% 
+         summarise(
+           n = n(),
+           n_stayedbooking = sum(status == "stayed"),
+           mean_tt_price  = mean(price_per_night, na.rm=TRUE)
+         )
+ 
+ bookings %>% 
+       group_by(for_business) %>% 
+     summarise(
+       n = n(),
+       review_mean = mean(review_score, na.rm = TRUE)
+       )
+ 
+ bookings %>% 
+   count(for_business,status)
+ 
+ #tidyr
+ library(tidyverse)
+ #joining dataframes based on a common column
+xdata<- bookings %>%  full_join(properties)
+ 
+ #handling missing values
+#xdata %>% drop.na() on any column or specified column
+
+#data reshaping  usisng gather or spread fxn
+
+ 
+ 
